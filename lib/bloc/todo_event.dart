@@ -16,3 +16,12 @@ class AddTodoEvent extends TodoEvent {
   @override
   List<Object?> get props => [todoModel];
 }
+
+class IsCheckTodo extends TodoEvent {
+  final bool isChecked;
+
+  const IsCheckTodo({required this.isChecked});
+
+  @override
+  List<Object?> get props => [isChecked];
+}

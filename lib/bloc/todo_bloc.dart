@@ -8,13 +8,24 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
 
   TodoBloc() : super(const TodoState()) {
     on<AddTodoEvent>(_addTodoEvent);
+    on<IsCheckTodo>(_isCheckTodo);
   }
 
   void _addTodoEvent(AddTodoEvent event, Emitter<TodoState> emit) {
     todoList.add(event.todoModel);
 
-    state.copyWith(
-      todoList: List.from(todoList),
+    emit(
+      state.copyWith(
+        todoList: List.from(todoList),
+      ),
+    );
+  }
+
+  void _isCheckTodo(IsCheckTodo event, Emitter<TodoState> emit) {
+    emit(
+      state.copyWith(
+        isChecked: event.isChecked,
+      ),
     );
   }
 }
