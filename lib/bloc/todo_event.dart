@@ -17,11 +17,11 @@ class AddTodoEvent extends TodoEvent {
   List<Object?> get props => [todoModel];
 }
 
-class IsCheckTodo extends TodoEvent {
-  final bool isChecked;
+class SelectItemTodo extends TodoEvent {
+  final TodoModel todoModel;
 
-  const IsCheckTodo({required this.isChecked});
+  const SelectItemTodo({required this.todoModel});
 
   @override
-  List<Object?> get props => [isChecked];
+  List<Object?> get props => [todoModel];
 }

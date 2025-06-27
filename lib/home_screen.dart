@@ -108,13 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 title: Text(todo.title),
                                 trailing: Checkbox(
                                   value: todo.isCheck,
-                                  onChanged: (value) {
-                                    context.read<TodoBloc>().add(
-                                      IsCheckTodo(
-                                        isChecked: value ?? false,
-                                      ),
-                                    );
-                                  },
+                                  onChanged: (value) {},
                                 ),
                               );
                             },

@@ -3,22 +3,22 @@ import 'package:todo_bloc_app/todo_model.dart';
 
 class TodoState extends Equatable {
   final List<TodoModel> todoList;
-  final bool isChecked;
+  final TodoModel? selectItemTodo;
   const TodoState({
     this.todoList = const [],
-    this.isChecked = false,
+    this.selectItemTodo,
   });
 
   @override
-  List<Object> get props => [todoList, isChecked];
+  List<Object?> get props => [todoList, selectItemTodo];
 
   TodoState copyWith({
     List<TodoModel>? todoList,
-    bool? isChecked,
+    TodoModel? selectItemTodo,
   }) {
     return TodoState(
       todoList: todoList ?? this.todoList,
-      isChecked: isChecked ?? this.isChecked,
+      selectItemTodo: selectItemTodo ?? this.selectItemTodo,
     );
   }
 }
