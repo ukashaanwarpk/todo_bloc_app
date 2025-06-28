@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:todo_bloc_app/bloc/todo_event.dart';
 import 'package:todo_bloc_app/bloc/todo_state.dart';
-import 'package:todo_bloc_app/todo_model.dart';
+import 'package:todo_bloc_app/model/todo_model.dart';
 
 class TodoBloc extends Bloc<TodoEvent, TodoState> {
   List<TodoModel> todoList = [];

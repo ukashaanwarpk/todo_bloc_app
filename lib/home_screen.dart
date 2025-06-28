@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_bloc_app/bloc/todo_bloc.dart';
 import 'package:todo_bloc_app/bloc/todo_event.dart';
 import 'package:todo_bloc_app/bloc/todo_state.dart';
-import 'package:todo_bloc_app/todo_model.dart';
+import 'package:todo_bloc_app/model/todo_model.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -119,6 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 title: Text(
                                   todo.title,
                                   style: TextStyle(
+                                    fontSize: 18,
                                     decoration:
                                         state.selectItemTodo.contains(todo)
                                             ? TextDecoration.lineThrough

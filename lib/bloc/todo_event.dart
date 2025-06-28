@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:todo_bloc_app/todo_model.dart';
+import 'package:todo_bloc_app/model/todo_model.dart';
 
 abstract class TodoEvent extends Equatable {
   const TodoEvent();
