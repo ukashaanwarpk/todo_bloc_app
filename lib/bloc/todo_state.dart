@@ -3,10 +3,10 @@ import 'package:todo_bloc_app/todo_model.dart';
 
 class TodoState extends Equatable {
   final List<TodoModel> todoList;
-  final TodoModel? selectItemTodo;
+  final List<TodoModel> selectItemTodo;
   const TodoState({
     this.todoList = const [],
-    this.selectItemTodo,
+    this.selectItemTodo = const [],
   });
 
   @override
@@ -14,7 +14,7 @@ class TodoState extends Equatable {
 
   TodoState copyWith({
     List<TodoModel>? todoList,
-    TodoModel? selectItemTodo,
+    List<TodoModel>? selectItemTodo,
   }) {
     return TodoState(
       todoList: todoList ?? this.todoList,

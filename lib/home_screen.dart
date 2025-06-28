@@ -70,6 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     buildWhen:
                         (previous, current) =>
                             previous.todoList != current.todoList,
+
                     builder: (context, state) {
                       return Text(
                         ' ${state.todoList.length} Task ',
@@ -96,7 +97,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: BlocBuilder<TodoBloc, TodoState>(
                   buildWhen:
                       (previous, current) =>
-                          previous.todoList != current.todoList,
+                          previous.todoList != current.todoList ||
+                          previous.selectItemTodo != current.selectItemTodo,
                   builder: (context, state) {
                     return CustomScrollView(
                       slivers: [
@@ -105,10 +107,47 @@ class _HomeScreenState extends State<HomeScreen> {
                             (context, index) {
                               final todo = state.todoList[index];
                               return ListTile(
-                                title: Text(todo.title),
+                                onLongPress: () {
+                                  if (state.selectItemTodo.contains(todo)) {
+                                    context.read<TodoBloc>().add(
+                                      DeleteTodoEvent(
+                                        todoModel: todo,
+                                      ),
+                                    );
+                                  }
+                                },
+                                title: Text(
+                                  todo.title,
+                                  style: TextStyle(
+                                    decoration:
+                                        state.selectItemTodo.contains(todo)
+                                            ? TextDecoration.lineThrough
+                                            : TextDecoration.none,
+                                  ),
+                                ),
+
                                 trailing: Checkbox(
-                                  value: todo.isCheck,
-                                  onChanged: (value) {},
+                                  activeColor: Colors.lightBlueAccent,
+                                  checkColor: Colors.white,
+                                  value:
+                                      state.selectItemTodo.contains(todo)
+                                          ? true
+                                          : false,
+                                  onChanged: (value) {
+                                    if (value!) {
+                                      context.read<TodoBloc>().add(
+                                        SelectItemTodo(
+                                          todoModel: todo,
+                                        ),
+                                      );
+                                    } else {
+                                      context.read<TodoBloc>().add(
+                                        UnSelectItemTodo(
+                                          todoModel: todo,
+                                        ),
+                                      );
+                                    }
+                                  },
                                 ),
                               );
                             },

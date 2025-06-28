@@ -25,3 +25,21 @@ class SelectItemTodo extends TodoEvent {
   @override
   List<Object?> get props => [todoModel];
 }
+
+class UnSelectItemTodo extends TodoEvent {
+  final TodoModel todoModel;
+
+  const UnSelectItemTodo({required this.todoModel});
+
+  @override
+  List<Object?> get props => [todoModel];
+}
+
+class DeleteTodoEvent extends TodoEvent {
+  final TodoModel todoModel;
+
+  const DeleteTodoEvent({required this.todoModel});
+
+  @override
+  List<Object?> get props => [todoModel];
+}
